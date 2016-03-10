@@ -1,5 +1,5 @@
 //
-//  RecommendViewController.h
+//  WebViewController.h
 //  PoorTravel
 //
 //  Created by Qianfeng on 16/3/10.
@@ -7,11 +7,9 @@
 //
 
 #import "BaseViewController.h"
-typedef void (^sendEvent)(void);
 
+@interface WebViewController : BaseViewController
 
-@interface RecommendViewController : BaseViewController
-
-
+@property (nonatomic, strong) NSURL *url;
 
 @end

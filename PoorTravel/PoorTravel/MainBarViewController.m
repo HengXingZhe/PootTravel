@@ -26,6 +26,7 @@
 }
 
 - (void)createTabBar {
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"TabBat" ofType:@"plist"];
     NSArray *tabBar = [NSArray arrayWithContentsOfFile:path];
     for (NSDictionary *info in tabBar) {
@@ -46,17 +47,21 @@
         UINavigationController *na = [[UINavigationController alloc]
                                       initWithRootViewController:vc];
         
+        NSDictionary *title = @{NSForegroundColorAttributeName:
+                                    [UIColor whiteColor]
+                                    };
+        
+        [vc.navigationController.navigationBar setTitleTextAttributes:title];
         
         [self addChildViewController:na];
     }
 
     [[UINavigationBar appearance] setBackgroundImage:
-                                [UIImage imageNamed:@"NavBack"]
-                                     forBarMetrics:UIBarMetricsDefault];
-    NSDictionary *title = @{[UIColor whiteColor]:
-                             NSForegroundColorAttributeName};
-    [[UINavigationBar appearance]
-          setTitleTextAttributes:title];
+                            [UIImage imageNamed:@"NavBack"]
+                            forBarMetrics:UIBarMetricsDefault];
+    
+
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
