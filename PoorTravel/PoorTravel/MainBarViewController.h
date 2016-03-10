@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainBarViewController.h
 //  PoorTravel
 //
 //  Created by Qianfeng on 16/3/9.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MainBarViewController : UITabBarController
 
 @end
-

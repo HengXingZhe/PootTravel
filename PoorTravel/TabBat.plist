@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>className</key>
+		<string>RecommendViewController</string>
+		<key>normalImageName</key>
+		<string>tab_found_normal</string>
+		<key>selectImageName</key>
+		<string>tab_found_select</string>
+		<key>tabBarTilte</key>
+		<string>推荐</string>
+	</dict>
+	<dict>
+		<key>className</key>
+		<string>DestationViewController</string>
+		<key>normalImageName</key>
+		<string>tab_nearest_normal</string>
+		<key>selectImageName</key>
+		<string>tab_nearest_select</string>
+		<key>tabBarTilte</key>
+		<string>目的地</string>
+	</dict>
+	<dict>
+		<key>className</key>
+		<string>CommunityViewController</string>
+		<key>normalImageName</key>
+		<string>tab_setting_normal</string>
+		<key>selectImageName</key>
+		<string>tab_setting_select</string>
+		<key>tabBarTilte</key>
+		<string>社区</string>
+	</dict>
+	<dict>
+		<key>className</key>
+		<string>VideoViewController</string>
+		<key>normalImageName</key>
+		<string>tabbar_appfree</string>
+		<key>selectImageName</key>
+		<string>tabbar_appfree_press</string>
+		<key>tabBarTilte</key>
+		<string>视频</string>
+	</dict>
+	<dict>
+		<key>className</key>
+		<string>MyViewController</string>
+		<key>normalImageName</key>
+		<string>tab_friend_normal</string>
+		<key>selectImageName</key>
+		<string>tab_friend_select</string>
+		<key>tabBarTilte</key>
+		<string>我的</string>
+	</dict>
+</array>
+</plist>
