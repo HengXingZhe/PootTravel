@@ -11,6 +11,7 @@
 #import "HeaderScroller.h"
 #import "HeaderScroller.h"
 #import "WebViewController.h"
+#import "TabBaseViewController.h"
 @interface FirstPageHeaderViewController ()
 
 @property (nonatomic, strong) HeaderScroller *gunDong;
@@ -35,6 +36,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.moreSubject addTarget:self action:
+                       @selector(morepress:)
+                              forControlEvents:UIControlEventTouchUpInside];
     [self createScrollerHeaderView];
 }
 
@@ -111,6 +115,18 @@
     [btn setBackgroundImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
 }
 
+//更多按钮的点击事件
+- (void)morepress:(UIButton*)btn {
+    
+    TabBaseViewController *tab = [[TabBaseViewController
+                                   alloc] init];
+    tab.title = @"专题";
+    [self.tabBarController setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:tab
+                                         animated:YES];
+
+
+}
 
 //给按钮设置背景图片
 
@@ -158,10 +174,10 @@
     [imageView startAnimating];
 
 }
-//按钮的点击事件
+//园按钮的点击事件
 - (void)btnPress:(UIButton*)btn {
+    
    
-
 }
 
 - (void)didReceiveMemoryWarning {

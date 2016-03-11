@@ -40,19 +40,22 @@
 - (void)timeChagne:(NSTimer*)time {
     
     CGPoint point = self.contentOffset;
-    point.x = _page.currentPage * self.frame.size.width;
-    self.contentOffset = point;
-    _page.currentPage++;
-    NSLog(@"%ld",_page.currentPage);
+   
     if (point.x >= (self.frame.size.width)*(self.imageArray.count-1)) {
         _page.currentPage = 0;
         self.contentOffset = CGPointMake(0, 0);
         
     }else {
-        NSInteger Page = (self.contentOffset.x + 5)/self.frame.size.width;
+       
+        NSInteger Page = (self.contentOffset.x)/
+                                      self.frame.size.width;
         self.page.currentPage = Page;
+        _page.currentPage++;
+        
+
     }
-    
+    point.x = _page.currentPage * self.frame.size.width;
+    self.contentOffset = point;
 }
 //创建滚动视图
 - (void)createImageView {
@@ -62,7 +65,7 @@
         Slide *slider = self.imageArray[num];
         
         CGRect frame1 = CGRectMake((self.frame.size.width) * num , 0, self.frame.size.width, self.frame.size.height);
-        NSLog(@"%@",NSStringFromCGRect(self.frame));
+        
         UIImageView *imageView = [[UIImageView alloc]
                                         initWithFrame:frame1];
         
@@ -140,7 +143,7 @@
         NSInteger curentPage1 =
             (scrollView.contentOffset.x + 5)/self.frame.size.width;
         _page.currentPage = curentPage1;
-        NSLog(@"%ld",curentPage1);
+       
     }
 
 }
