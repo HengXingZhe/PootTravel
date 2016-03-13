@@ -54,7 +54,7 @@
 
 - (void)createScrollerView {
     _scrollerView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    _scrollerView.contentSize = CGSizeMake(self.view.frame.size.width, 2000);
+    _scrollerView.scrollEnabled = NO;
     _scrollerView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_scrollerView];
 }
@@ -101,6 +101,7 @@
     }];
 }
 
+//上面的滚动视图
 - (void)createHeaderView {
     
    
@@ -158,6 +159,7 @@
     [btn setTitle:@"查看全部折扣" forState:
                                 UIControlStateNormal];
     [btn addTarget:self action:@selector(moreSubject:) forControlEvents:UIControlEventTouchUpInside];
+    btn.tag = 200;
     [self.scrollerView addSubview:btn];
     
 }
@@ -168,14 +170,37 @@
 
 }
 
+//标题
+- (UILabel*)createHotTravelHeaderView {
+    
+    UIButton *btn = (UIButton*)[self.view viewWithTag:200];
+    
+    CGFloat Y = CGRectGetMaxY(btn.frame);
+    
+    UILabel *view = [[UILabel alloc] initWithFrame:
+                     CGRectMake(10, Y + 10, _scrollerView.frame.size.width - 20, 44)];
+    view.text = @" 查看热门游记";
+    view.textColor = [UIColor grayColor];
+    
+     _scrollerView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetMaxY(view.frame));
+    return view;
+}
+
 //查看热门旅游
 - (void)createHotTabView {
 
-    CGFloat Y = CGRectGetMaxY(_collectionView.frame);
+    UILabel *la = [self createHotTravelHeaderView];
     
-    _hotView = [[HotTravelTabView alloc] initWithFrame:CGRectMake(10, Y + 54, self.view.frame.size.width - 20, self.view.frame.size.height)
+    [_scrollerView addSubview:la];
+    
+    
+    _hotView = [[HotTravelTabView alloc] initWithFrame:CGRectMake(10,0, self.view.frame.size.width - 20, self.view.frame.size.height)
                                                                   style:UITableViewStylePlain];
-    [self.scrollerView addSubview:_hotView];
+    _hotView.tableHeaderView = _scrollerView;
+    
+    _hotView.showsVerticalScrollIndicator = NO;
+    
+    [self.view addSubview:_hotView];
     
     __block typeof(self) weakSelf = self;
     [_hotView setBlock:^(NSURL *url) {

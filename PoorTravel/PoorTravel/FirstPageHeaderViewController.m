@@ -12,6 +12,7 @@
 #import "HeaderScroller.h"
 #import "WebViewController.h"
 #import "TabBaseViewController.h"
+#import "IdeaViewController.h"
 @interface FirstPageHeaderViewController ()
 
 @property (nonatomic, strong) HeaderScroller *gunDong;
@@ -41,6 +42,14 @@
                               forControlEvents:UIControlEventTouchUpInside];
     [self createScrollerHeaderView];
 }
+
+
+- (IBAction)kanJingNangPress:(UIButton *)sender {
+    IdeaViewController *idea = [[IdeaViewController alloc] init];
+    [self.navigationController pushViewController:idea animated:YES];
+
+}
+
 
 //创建滚动视图
 - (void)createScrollerHeaderView {

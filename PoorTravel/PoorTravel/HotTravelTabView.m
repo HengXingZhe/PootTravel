@@ -21,7 +21,7 @@
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     if (self = [super initWithFrame:frame style:style]) {
         [self createData];
-        self.tableHeaderView = [self createHeaderView];
+        _Source = [NSMutableArray array];
     }
     _page = 1;
     [self registerNib:
@@ -33,13 +33,7 @@
 
 }
 
-- (UILabel*)createHeaderView {
-    UILabel *view = [[UILabel alloc] initWithFrame:
-                    CGRectMake(0, 0, self.frame.size.width, 44)];
-    view.text = @" 查看热门游记";
-    view.textColor = [UIColor grayColor];
-    return view;
-}
+
 - (void)createData {
     
     NSString *str = [NSString stringWithFormat:@"psge=%ld",_page];
@@ -52,8 +46,7 @@
         
         model.data = [HotData arrayOfModelsFromDictionaries:response[@"data"] error:nil];
         
-        self.Source = [model.data copy];
-        
+        [self.Source addObjectsFromArray:model.data];
         [self reloadData];
     } filed:^(id error) {
         
@@ -94,6 +87,16 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     return 100;
+}
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (indexPath.row == _Source.count-1) {
+        _page++;
+        [self createData];
+    }
+
 }
 /*
 // Only override drawRect: if you perform custom drawing.

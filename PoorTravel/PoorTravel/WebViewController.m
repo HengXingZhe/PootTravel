@@ -10,6 +10,8 @@
 
 @interface WebViewController ()<UIWebViewDelegate>
 
+@property (nonatomic, strong) UIActivityIndicatorView *indicator;
+
 @end
 
 @implementation WebViewController
@@ -18,24 +20,45 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self createWebView];
+    [self indicator];
+    [_indicator startAnimating];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 - (void)createWebView {
     UIWebView *webView = [[UIWebView alloc] initWithFrame:
                           
                        self.view.frame];
-    
+    webView.delegate = self;
     [self.view addSubview:webView];
     NSURLRequest *request = [NSURLRequest requestWithURL:_url];
     [webView loadRequest:request];
 }
 
+- (UIActivityIndicatorView*)indicator {
+    if (!_indicator) {
+        _indicator = [[UIActivityIndicatorView alloc]
+                      initWithFrame:CGRectMake(0, 0, 100, 100)];
+        _indicator.center = self.view.center;
+        _indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        [self.view addSubview:_indicator];
+    }
+    return _indicator;
+
+}
+
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
 
-    NSLog(@"%@",error);
+   
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"开始请求");
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [_indicator stopAnimating];
+    [_indicator removeFromSuperview];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

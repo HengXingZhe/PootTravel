@@ -17,5 +17,6 @@ typedef void (^field)(id error);
 
 - (void)loadNetDataWithUrl:(NSString*)url success:(successed)successed filed:(field)field;
 
+- (void)laodNetDataByPostUrl:(NSString *)url para:(NSDictionary*)para success:(successed)successed filed:(field)field;
 
 @end

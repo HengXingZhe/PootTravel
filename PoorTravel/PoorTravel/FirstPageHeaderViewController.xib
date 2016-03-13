@@ -121,6 +121,9 @@
                                 <constraint firstAttribute="width" constant="61" id="QaP-uz-JM8"/>
                                 <constraint firstAttribute="height" constant="60" id="WPU-XE-5mV"/>
                             </constraints>
+                            <connections>
+                                <action selector="kanJingNangPress:" destination="-1" eventType="touchUpInside" id="jxs-CE-nd7"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJg-tx-TZI">
                             <rect key="frame" x="120" y="172" width="50" height="50"/>

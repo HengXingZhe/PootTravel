@@ -45,4 +45,18 @@
 
 }
 
+- (void)laodNetDataByPostUrl:(NSString *)url para:(NSDictionary*)para success:(successed)successed filed:(field)field {
+    
+    [_manage POST:url parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        successed(responseObject);
+    
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        field(error);
+        
+    }];
+
+}
+
 @end
