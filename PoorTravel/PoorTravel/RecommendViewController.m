@@ -104,8 +104,6 @@
 //上面的滚动视图
 - (void)createHeaderView {
     
-   
-    
     _first = [[FirstPageHeaderViewController alloc] init];
     [self addChildViewController:_first];
     [self.scrollerView addSubview:_first.view];
